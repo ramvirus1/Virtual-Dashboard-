@@ -1,8 +1,8 @@
 <div fxLayout="row" fxLayout.lt-md="row">
-    <button mat-fab matTooltip="Choose Color" class="gappedToolBarButtons" [matMenuTriggerFor]="colorMenu">
+    <button  *ngIf="toolBarModel.selectedAction === 'Drawing'" mat-fab matTooltip="Choose Color" class="gappedToolBarButtons" [matMenuTriggerFor]="colorMenu">
         <div class="buttonColorHighlight" [style.background]="toolBarModel.selectedColor"></div>
     </button>
-    <button mat-fab matTooltip="Choose Style" class="gappedToolBarButtons" [matMenuTriggerFor]="shapeMenu">
+    <button  *ngIf="toolBarModel.selectedAction === 'Drawing'" mat-fab matTooltip="Choose Style" class="gappedToolBarButtons" [matMenuTriggerFor]="shapeMenu">
         <img class="buttonImageHighlight" mat-list-icon [src]="this.toolBarModel.selectedShapeImagePath"/>
     </button>
     <button mat-fab matTooltip="Choose Tool" class="lastToolBarButton" [matMenuTriggerFor]="toolMenu">

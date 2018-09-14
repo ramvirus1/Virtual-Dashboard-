@@ -44,8 +44,7 @@ export class CanvasComponent{
                 this.drawPattern(e,
                     this.canvasModel.selectedColor,
                     this.canvasModel.selectedShape,
-                    this.canvasModel.selectedAction,
-                    { x:this.canvasModel.currentX, y:this.canvasModel.currentY }
+                    this.canvasModel.selectedAction
                 );
             }
         });
@@ -80,8 +79,7 @@ export class CanvasComponent{
        Parameters : Event,Color,Start point
        Functionality : Draw the User Selected Patterns on the Canvas 
     */
-    drawPattern(e,color,shape,action,startPoint){
-        [this.canvasModel.currentX,this.canvasModel.currentY] = [startPoint.x,startPoint.y];
+    drawPattern(e,color,shape,action){
         this.context.beginPath();
         if(action === 'Erasing'){
             shape = 'Eraser';
@@ -107,8 +105,8 @@ export class CanvasComponent{
             break;
             case 'Circle':
                 var distance = Math.sqrt(Math.pow(this.canvasModel.currentX - e.offsetX, 2) + Math.pow(this.canvasModel.currentY - e.offsetY,2));
-                this.context.fillStyle = color;
                 this.context.arc(this.canvasModel.currentX , this.canvasModel.currentY,distance, 0, Math.PI * 2, false);
+                this.context.fillStyle = color;
             break;
             case 'Eraser':
                 this.context.moveTo(this.canvasModel.currentX , this.canvasModel.currentY);
@@ -140,13 +138,13 @@ export class CanvasComponent{
         if(interaction.name !== this.dashboardViewModel.currentUser){
             this.dashboardViewModel.onGoingInteractionDetail = { user:'',action:'' };
             this.dashboardViewModel.isInteractionHappening = false;
+             [this.canvasModel.currentX,this.canvasModel.currentY] = [interaction.drawStartPoint.x,interaction.drawStartPoint.y];
               for(let path of interaction.drawnPath.path){
                   this.drawPattern(
                       {offsetX:path.x,offsetY:path.y},
                       interaction.color,
                       interaction.shape,
-                      interaction.action,
-                      interaction.drawStartPoint
+                      interaction.action
                  );
             }
         }
@@ -160,13 +158,13 @@ export class CanvasComponent{
     onPreviousUpdates(previousUpdates){
         if(previousUpdates.previousPaths.length){
            for(let update of previousUpdates.previousPaths){
+            [this.canvasModel.currentX,this.canvasModel.currentY] = [update.drawStartPoint.x,update.drawStartPoint.y];
                for(let path of update.drawnPath.path){
                     this.drawPattern(
                         {offsetX:path.x,offsetY:path.y},
                         update.color,
                         update.shape,
-                        update.action,
-                        update.drawStartPoint
+                        update.action
                     );
                }
            }

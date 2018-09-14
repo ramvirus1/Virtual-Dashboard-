@@ -103,6 +103,7 @@ export class CanvasComponent{
                 this.context.moveTo(this.canvasModel.currentX , this.canvasModel.currentY);
                 this.context.lineTo(this.canvasModel.currentX+50, this.canvasModel.currentY+100);
                 this.context.lineTo(this.canvasModel.currentX+100, this.canvasModel.currentY+100);
+                this.context.fillStyle = color;
             break;
             case 'Circle':
                 var distance = Math.sqrt(Math.pow(this.canvasModel.currentX - e.offsetX, 2) + Math.pow(this.canvasModel.currentY - e.offsetY,2));

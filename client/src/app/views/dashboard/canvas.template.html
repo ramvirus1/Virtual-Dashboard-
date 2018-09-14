@@ -1,0 +1,27 @@
+<mat-sidenav-container style="height:100vh;">
+    <mat-sidenav mode="side" [fixedInViewport]="false" [opened]="dashboardViewModel.loginState" class="loginSideNav">
+        <login (nameEvent)="nameEventHander($event)"></login>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div *ngIf="dashboardViewModel.loginState" class="welcomeScreen">
+            <span class="welcomeText textColor">Welcome To Virtual WhiteBoard, Please Login To Continue</span>
+        </div>
+        <mat-toolbar class="appToolBar">
+            <mat-toolbar-row>
+                <span class="textColor">Virtual WhiteBoard</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+            <mat-grid-list cols="4" rows="1">
+                <mat-grid-tile #canvasholder class="canvasHolder fullHeight" [colspan]="3" [rowspan]="1">
+                    <toolbar class="toolBarComponentHolder" (toolBarInteractEvent)="onToolBarInteraction($event)"></toolbar>
+                    <div *ngIf="dashboardViewModel.isInteractionHappening" class="userInteractionScreen">
+                        <span class="userInteractionText">{{dashboardViewModel.onGoingInteractionDetail.user}} is {{dashboardViewModel.onGoingInteractionDetail.action}}...Please Wait</span>
+                    </div>
+                    <canvas #drawCanvas [style.cursor]="canvasModel.canvasCursor" class="canvasBg"></canvas>
+                </mat-grid-tile>
+                <mat-grid-tile class="fullHeight" [colspan]="1" [rowspan]="1">
+                    <onlineusers [onlineUsers]="dashboardViewModel.onlineUsers" [userActivity]="dashboardViewModel.onGoingInteractionDetail" class="onlineUsersComponentHolder"></onlineusers>
+                </mat-grid-tile>
+            </mat-grid-list>
+    </mat-sidenav-content>
+</mat-sidenav-container>

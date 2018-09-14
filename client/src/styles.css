@@ -1,0 +1,114 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.mat-card-header-text{
+    margin:0 !important;
+}
+.fullHeight{
+    height: 100%;
+}
+.textColor{
+    color:white;
+}
+
+/* Canvas */
+.loginSideNav{
+    -webkit-box-shadow: 7px 2px 8px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 2px 8px -1px rgba(0,0,0,0.75);
+    box-shadow: 7px 2px 8px -1px rgba(0,0,0,0.75);
+    background: #D66D75;
+    background: -webkit-linear-gradient(to right, #E29587, #D66D75);
+    background: linear-gradient(to right, #E29587, #D66D75);
+}
+.appToolBar{
+    background: #d66d75;
+}
+.canvasHolder{
+    background: #D66D75;
+    background: -webkit-linear-gradient(to right, #E29587, #D66D75);
+    background: linear-gradient(to right, #E29587, #D66D75);
+
+}
+.canvasBg{
+    background: white;
+    -webkit-box-shadow: 2px 3px 12px 1px rgba(0,0,0,0.47);
+    -moz-box-shadow: 2px 3px 12px 1px rgba(0,0,0,0.47);
+    box-shadow: 2px 3px 12px 1px rgba(0,0,0,0.47);
+}
+.welcomeScreen{
+    text-align: center;
+    z-index:1;
+    display:table;
+    background: #130f2bf2;
+    position: absolute;
+    height:100%;
+    width:100%
+}
+.welcomeText{
+    display:table-cell;
+    vertical-align:middle;
+}
+.userInteractionScreen{
+    display:table;
+    background: #0000009e;
+    position: absolute;
+    height:100%;
+    width:100%
+}
+.userInteractionText{
+    color: white;
+    text-align: center;
+    display:table-cell;
+    vertical-align:middle;
+}
+.onlineUsersComponentHolder{
+    width: 99%;
+    height: 100%;
+    overflow-y: auto;
+}
+.toolBarComponentHolder{
+    position: absolute;
+    top:7px;
+}
+/* Canvas */
+
+/* Login */
+.loginContainer{
+    padding: 10%;
+    width: 40vw;
+}
+/* Login */
+
+/* Online Users */
+.onlineUsersList{
+    height: 100%;
+    padding-top: 20% !important;
+}
+.onlineUsersHeader{
+    border-bottom: 1px solid black;
+    background: white;
+}
+.onlineUsersToolBar{
+    position:fixed;
+    background: white;
+}
+
+
+/* Online Users */
+.gappedToolBarButtons{
+    margin-right: 35px !important;
+    background: white !important;
+}
+.lastToolBarButton{
+    background: white !important;
+}
+.buttonColorHighlight{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.buttonImageHighlight{
+    height: 25px;
+}
+/* 
+
+*/

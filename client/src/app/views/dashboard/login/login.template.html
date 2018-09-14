@@ -1,0 +1,6 @@
+<div fxLayout="column" fxLayout.lt-md="row" fxLayoutGap="10px" class="loginContainer">
+    <mat-form-field class="example-full-width">
+        <input color="primary" matInput [(ngModel)]="loginModel.username" placeholder="Enter Username">
+    </mat-form-field>
+    <button mat-raised-button (click)="registerUser()" color="primary">Login</button>
+</div>

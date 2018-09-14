@@ -1,0 +1,42 @@
+<div fxLayout="row" fxLayout.lt-md="row">
+    <button mat-fab matTooltip="Choose Color" class="gappedToolBarButtons" [matMenuTriggerFor]="colorMenu">
+        <div class="buttonColorHighlight" [style.background]="toolBarModel.selectedColor"></div>
+    </button>
+    <button mat-fab matTooltip="Choose Style" class="gappedToolBarButtons" [matMenuTriggerFor]="shapeMenu">
+        <img class="buttonImageHighlight" mat-list-icon [src]="this.toolBarModel.selectedShapeImagePath"/>
+    </button>
+    <button mat-fab matTooltip="Choose Tool" class="lastToolBarButton" [matMenuTriggerFor]="toolMenu">
+        <img *ngIf="toolBarModel.selectedAction === 'Erasing'" class="buttonImageHighlight" mat-list-icon src="assets/images/eraser.svg"/>
+        <img *ngIf="toolBarModel.selectedAction === 'Drawing'" class="buttonImageHighlight" mat-list-icon src="assets/images/draw.svg"/>
+    </button>
+</div>
+<mat-menu #colorMenu="matMenu">
+    <mat-list>
+        <mat-list-item (click)="onColorSelect(color.colorCode)" *ngFor="let color of toolBarModel.colors">
+            <div  mat-list-icon [style.background]="color.colorCode"></div>
+            <h4 mat-line>{{ color.name }}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+</mat-menu>
+<mat-menu #shapeMenu="matMenu">
+    <mat-list>
+        <mat-list-item (click)="onShapeSelect(shape.name,shape.cursorStyle,shape.imagePath)" *ngFor="let shape of toolBarModel.shapes">
+            <img mat-list-icon [src]="shape.imagePath"/>
+            <h4 mat-line>{{shape.name}}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+</mat-menu>
+<mat-menu #toolMenu="matMenu">
+        <mat-list>
+        <mat-list-item (click)="onToolSelect(tool.name)" *ngFor="let tool of toolBarModel.tools">
+            <img mat-list-icon [src]="tool.imagePath"/>
+            <h4 mat-line>{{tool.name}}</h4>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+</mat-menu>
+
+
+

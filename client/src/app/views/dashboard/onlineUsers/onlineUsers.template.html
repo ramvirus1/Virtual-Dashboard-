@@ -1,0 +1,18 @@
+<mat-toolbar class="onlineUsersToolBar">
+    <mat-toolbar-row class="onlineUsersHeader">
+        <span>Online Users</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-list class="onlineUsersList" *ngIf="onlineUserModel.onlineUsers.length">
+    <mat-list-item *ngFor="let user of onlineUserModel.onlineUsers">
+        <h4 mat-line>{{user.name}}</h4>
+        <p mat-line>is {{user.status}}</p>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+    
+</mat-list>
+<mat-list class="onlineUsersList" *ngIf="!onlineUserModel.onlineUsers.length">
+    <mat-list-item>
+        <h4 mat-line>No Online Users</h4>
+    </mat-list-item>
+</mat-list>
